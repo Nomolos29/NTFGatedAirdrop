@@ -5,7 +5,7 @@ import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
 import "@openzeppelin/contracts/utils/cryptography/MerkleProof.sol";
 
-contract Airdrop {
+contract AirdropContract {
     IERC20 public token;
     IERC721 public gatePass;
 
@@ -27,10 +27,10 @@ contract Airdrop {
 
     function claimAirdrop(
         uint256 amount,
-        uint _nftTokenId,
+        uint nftTokenId,
         bytes32[] calldata merkleProof
     ) external {
-        address isOwner = gatePass.ownerOf(uint _nftTokenId);
+        address isOwner = gatePass.ownerOf(nftTokenId);
         
         if(isOwner != msg.sender) { revert notAValidClaimer(); }
         if(hasClaimed[msg.sender]) { revert airdropAlreadyClaimed(); }
