@@ -37,7 +37,7 @@ describe("MerkleAirdrop", function () {
   it("Should deploy with the correct parameters", async function () {
     const { token, airdrop, merkleRoot, BAYC_ADDRESS } = await loadFixture(deployMerkleAirdrop);
     expect(await airdrop.token()).to.equal( token.target);
-    expect(await airdrop.bayc()).to.equal(BAYC_ADDRESS);
+    expect(await airdrop.gatePass()).to.equal(BAYC_ADDRESS);
     expect(await airdrop.merkleRoot()).to.equal(merkleRoot);
   });
 
